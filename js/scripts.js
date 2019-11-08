@@ -1,66 +1,49 @@
 // BUSINESS LOGIC--------
-function PizzaOrder(size, toppings, cost){
+function PizzaOrder(size, toppings,cost){
   this.size = size,
   this.toppings = toppings,
-  this.cost = 5;
+  this.cost = cost
 }
 
 
-PizzaOrder.prototype.costCalc = function() {
+PizzaOrder.prototype.getCost = function() {
   console.log(this.cost);
-  var toppings = this.toppings
-  toppings.forEach(function(topping){
-    this.cost += 1;
-    console.log(this.cost);
-
-  });
-  // for(var i = 0; i < toppings.length; i++){
-  //   alert("ENTER")
-  //   if(toppings[i] === "1"){
-  //     return this.cost += 1;
-  //     console.log(this.cost);
-  //     console.log("This.Cost in the loop", this.cost)
-  //   }else if (toppings[i] === '2'){
-  //     this.cost += 2;
-  //   }
-  //
-  //
-  //   console.log(result);
-  // }
-  //
-  // console.log(this.cost);
-
   if(this.size === 8){
     this.cost += 8;
   } else if(this.size === 12){
     this.cost += 12;
-  } else if(this.size === 14){
+  } else{
     this.cost += 14;
   }
+  console.log(this.size);
+  console.log(this.toppings);
+  this.toppings.forEach(function(topping) {
+    if(topping === "1"){
+      this.cost += 1;
+    }
+    return this.cost
+  });
   return this.cost
 }
+
 
 // UI LOGIC ----------
 $(document).ready(function(){
   $('form#pizzaOrder').submit(function(event){
     event.preventDefault();
-    var pizzaOrder = new PizzaOrder(sizeInput, toppingInputs, pizzaCost);
-    var toppingInputs = [];
-    var pizzaCost = pizzaOrder.costCalc()
+    var cost = 5;
+    var toppingArray = [];
     var sizeInput = parseInt($("input:radio[name=pizzaSize]:checked").val());
+    $("input:checkbox[name='toppings']:checked").each(function(){
+     var topping = $(this).val();
+     toppingArray.push(topping);
+   });
+   var pizzaOrder = new PizzaOrder(sizeInput, toppingArray, cost);
 
-    $("input:checkbox[name=veggies]:checked").each(function(){
-      var veggies = $(this).val();
-      toppingInputs.push(veggies);
-    });
 
-    $("input:checkbox[name=meats]:checked").each(function(){
-      var meats = $(this).val();
-      toppingInputs.push(meats);
-    });
-    console.log(toppingInputs);
-
-    console.log(pizzaOrder.costCalc(sizeInput, toppingInputs));
+    console.log(toppingArray);
+    console.log(pizzaOrder);
+    // console.log(pizzaOrder.costCalc());
 
   });
 });
