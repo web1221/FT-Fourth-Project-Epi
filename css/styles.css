@@ -1,3 +1,12 @@
 .hidden {
   display: none;
 }
+
+.jumbotron {
+  text-align: center;
+
+}
+
+.inputLable {
+  padding: 100px;
+}

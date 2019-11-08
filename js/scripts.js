@@ -33,6 +33,7 @@ PizzaOrder.prototype.getCost = function(toppings) {
 $(document).ready(function(){
   $('form#pizzaOrderForm').submit(function(event){
     event.preventDefault();
+    var nameInput = $('input#nameInput').val();
     var toppingArray = [];
     var sizeInput = parseInt($("input:radio[name=pizzaSize]:checked").val());
     $("input:checkbox[name='toppings']:checked").each(function(){
@@ -41,8 +42,9 @@ $(document).ready(function(){
     });
     var pizzaOrder = new PizzaOrder(sizeInput, toppingArray, cost);
     var cost = pizzaOrder.getCost(toppingArray)
-    $('.hidden').fadeIn(1000)
+    $('.hidden').fadeIn(1000);
     $('.total').text(cost);
+    $('.name').text(nameInput)
 
     console.log(pizzaOrder);
     console.log(cost);
