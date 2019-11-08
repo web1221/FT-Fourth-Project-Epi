@@ -1,24 +1,28 @@
 // BUSINESS LOGIC--------
-function PizzaOrder(size, toppings){
+function PizzaOrder(size, toppings, cost){
   this.size = size,
   this.toppings = toppings,
-  this.cost = 0;
+  this.cost = cost;
 }
 
 PizzaOrder.prototype.costCalc = function(size, toppings) {
   this.cost = 5;
-  // toppings.forEach(function(topping){
-  //   if(topping === 1){
-  //     return this.cost += 1;
-  //   }else if (topping === 2){
-  //     return this.cost += 2;
-  //   }
-  //   return this.cost;
-  // });
-  for(var i = 0; i > toppings.length; i++){
-    this.cost += toppings[i]
-  }
-  console.log("ForEach loop calc",this.cost);
+  toppings.forEach(function(topping){
+    alert("ENTER")
+    // console.log(topping);
+    // console.log(topping === 1);
+    if(topping === 1){
+      console.log("Equals 1", this.cost += 1);
+      this.cost + 1;
+    }else if (topping === 2){
+      this.cost += 2;
+    }
+    return this.cost;
+    console.log("ForEach loop calc",this.cost);
+  });
+  // for(var i = 0; i > toppings.length; i++){
+  //   this.cost += toppings[i]
+  // }
 
 
   if(size === 8){
@@ -35,8 +39,9 @@ PizzaOrder.prototype.costCalc = function(size, toppings) {
 $(document).ready(function(){
   $('form#pizzaOrder').submit(function(event){
     event.preventDefault();
-    var pizzaOrder = new PizzaOrder(sizeInput, toppingInputs);
+    var pizzaOrder = new PizzaOrder(sizeInput, toppingInputs, pizzaCost);
     var toppingInputs = [];
+    var pizzaCost = pizzaOrder.costCalc(sizeInput, toppingInputs)
     var sizeInput = parseInt($("input:radio[name=pizzaSize]:checked").val());
 
     $("input:checkbox[name=veggies]:checked").each(function(){
