@@ -1,20 +1,24 @@
 // BUSINESS LOGIC--------
-function PizzaOrder(size, toppings,cost){
+function PizzaOrder(size,toppings,cost){
   this.size = size,
-  this.toppings = toppings,
+  this.toppings = [toppings],
   this.cost = cost
 }
 
 
-PizzaOrder.prototype.getCost = function() {
+PizzaOrder.prototype.getCost = function(toppings) {
     this.cost = 5;
-    this.toppings.forEach(function(topping) {
-    if(topping === "1"){
-      this.cost += 1;
+    // this.toppings.forEach(function(topping) {
+    //   console.log(this.cost);
+    // });
+    for (var i = 0; i < toppings.length; i++) {
+      // this.cost += 1
+      if(toppings[i] === "1"){
+        this.cost += 1;
+      } else if(toppings[i] === "2"){
+        this.cost += 2;
+      }
     }
-    return this.cost
-    });
-    console.log(this.cost);
     if(this.size === 8){
       this.cost += 8;
     } else if(this.size === 12){
@@ -40,7 +44,7 @@ $(document).ready(function(){
      toppingArray.push(topping);
    });
    var pizzaOrder = new PizzaOrder(sizeInput, toppingArray, cost);
-   var cost = pizzaOrder.getCost()
+   var cost = pizzaOrder.getCost(toppingArray)
 
 
     console.log(pizzaOrder);
