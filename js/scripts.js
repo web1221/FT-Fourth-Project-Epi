@@ -8,5 +8,11 @@ function PizzaOrder(size, toppings){
 
 // UI LOGIC ----------
 $(document).ready(function(){
+  $('form#pizzaOrder').submit(function(event){
+    var sizeInput = parseInt($("input:radio[name='pizzaSize']:checked").val());
+    console.log(sizeInput);
 
+
+    event.preventDefault();
+  });
 });
