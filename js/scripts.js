@@ -2,34 +2,39 @@
 function PizzaOrder(size, toppings, cost){
   this.size = size,
   this.toppings = toppings,
-  this.cost = cost;
+  this.cost = 5;
 }
 
-PizzaOrder.prototype.costCalc = function(size, toppings) {
-  this.cost = 5;
+
+PizzaOrder.prototype.costCalc = function() {
+  console.log(this.cost);
+  var toppings = this.toppings
   toppings.forEach(function(topping){
-    alert("ENTER")
-    // console.log(topping);
-    // console.log(topping === 1);
-    if(topping === 1){
-      console.log("Equals 1", this.cost += 1);
-      this.cost + 1;
-    }else if (topping === 2){
-      this.cost += 2;
-    }
-    return this.cost;
-    console.log("ForEach loop calc",this.cost);
+    this.cost += 1;
+    console.log(this.cost);
+
   });
-  // for(var i = 0; i > toppings.length; i++){
-  //   this.cost += toppings[i]
+  // for(var i = 0; i < toppings.length; i++){
+  //   alert("ENTER")
+  //   if(toppings[i] === "1"){
+  //     return this.cost += 1;
+  //     console.log(this.cost);
+  //     console.log("This.Cost in the loop", this.cost)
+  //   }else if (toppings[i] === '2'){
+  //     this.cost += 2;
+  //   }
+  //
+  //
+  //   console.log(result);
   // }
+  //
+  // console.log(this.cost);
 
-
-  if(size === 8){
+  if(this.size === 8){
     this.cost += 8;
-  } else if(size === 12){
+  } else if(this.size === 12){
     this.cost += 12;
-  } else if(size === 14){
+  } else if(this.size === 14){
     this.cost += 14;
   }
   return this.cost
@@ -41,16 +46,16 @@ $(document).ready(function(){
     event.preventDefault();
     var pizzaOrder = new PizzaOrder(sizeInput, toppingInputs, pizzaCost);
     var toppingInputs = [];
-    var pizzaCost = pizzaOrder.costCalc(sizeInput, toppingInputs)
+    var pizzaCost = pizzaOrder.costCalc()
     var sizeInput = parseInt($("input:radio[name=pizzaSize]:checked").val());
 
     $("input:checkbox[name=veggies]:checked").each(function(){
-      var veggies = parseInt($(this).val());
+      var veggies = $(this).val();
       toppingInputs.push(veggies);
     });
 
     $("input:checkbox[name=meats]:checked").each(function(){
-      var meats = parseInt($(this).val());
+      var meats = $(this).val();
       toppingInputs.push(meats);
     });
     console.log(toppingInputs);
