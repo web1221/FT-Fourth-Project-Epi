@@ -14,26 +14,27 @@
       <!-- SIZE SELECTION -->
       <div class="form-group">
         <label for="nameInput">Enter Your name:</label>
-        <input type="text" id="nameInput" placeholder="name...">
+        <input type="text" id="nameInput" placeholder="name..." required>
         <h3>Select a Size:</h3>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="pizzaSize"  value="8">
-          <label class="form-check-label" for="personalRadio">Small</label>
+          <input class="form-check-input" type="radio" name="pizzaSize"  value="8" required>
+          <label class="form-check-label" for="personalRadio">Small - $13</label>
         </div>
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="pizzaSize" value="12">
-          <label class="form-check-label" for="personalRadio">Medium</label>
+          <label class="form-check-label" for="personalRadio">Medium - $17</label>
         </div>
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" name="pizzaSize" value="14">
-          <label class="form-check-label" for="personalRadio">Large</label>
+          <label class="form-check-label" for="personalRadio">Large - $19</label>
         </div>
       </div>
       <!-- TOPPINGS -->
       <div class="form-group">
         <h4>Choose your toppings!</h4>
         <!-- VEGGIES -->
-        <h6>Veggies:</h6>
+        <h5>Veggies:</h5>
+        <p>(+$1 each)</p>
 
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="1" name="toppings">
@@ -68,7 +69,8 @@
         <!-- <div class="form-group"> -->
           <h4>Choose your toppings!</h4>
           <!-- MEATS -->
-          <h6>Meats:</h6>
+          <h5>Meats:</h5>
+          <p>(+$2 each)</p>
 
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="2" name="toppings">

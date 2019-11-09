@@ -23,7 +23,6 @@ PizzaOrder.prototype.getCost = function(toppings) {
     this.cost += 14;
   }
   return this.cost;
-  console.log(this.cost);
 }
 
 
