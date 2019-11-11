@@ -5,6 +5,7 @@ function PizzaOrder(size,toppings,cost){
   this.cost = cost
 }
 
+
 PizzaOrder.prototype.getCost = function(toppings) {
   this.cost = 5;
   for (var i = 0; i < toppings.length; i++) {
@@ -41,4 +42,10 @@ $(document).ready(function(){
     $('.total').text(cost);
     $('.name').text(nameInput)
   });
+  $('#deliveryOption').click(function(){
+    $('#addressForm').show();
+  });
+  $('#carryOutOption').click(function(){
+    $('#addressForm').hide();
+  })
 });
