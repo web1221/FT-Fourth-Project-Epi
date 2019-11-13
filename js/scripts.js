@@ -1,12 +1,12 @@
 // BUSINESS LOGIC--------
-function PizzaOrder(size,toppings,cost){
+function PizzaOrder(size,toppings){
   this.size = size,
-  this.toppings = [toppings],
-  this.cost = cost
+  this.toppings = toppings
 }
 
 
-PizzaOrder.prototype.getCost = function(toppings) {
+PizzaOrder.prototype.getCost = function() {
+  var toppings = this.toppings
   this.cost = 5;
   for (var i = 0; i < toppings.length; i++) {
     if(toppings[i] === "1"){
@@ -30,16 +30,16 @@ $(document).ready(function(){
   $('form#pizzaOrderForm').submit(function(event){
     event.preventDefault();
     var nameInput = $('input#nameInput').val();
-    var toppingArray = [];
     var sizeInput = parseInt($("input:radio[name=pizzaSize]:checked").val());
+    var toppingArray = [];
     $("input:checkbox[name='toppings']:checked").each(function(){
       var topping = $(this).val();
       toppingArray.push(topping);
     });
-    var pizzaOrder = new PizzaOrder(sizeInput, toppingArray, cost);
-    var cost = pizzaOrder.getCost(toppingArray)
+    var pizzaOrder = new PizzaOrder(sizeInput, toppingArray);
+    pizzaOrder.getCost()
     $('.hidden').fadeIn(1000);
-    $('.total').text(cost);
+    $('.total').text(pizzaOrder.cost);
     $('.name').text(nameInput)
   });
   $('#deliveryOption').click(function(){
