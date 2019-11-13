@@ -4,7 +4,6 @@ function PizzaOrder(size,toppings){
   this.toppings = toppings
 }
 
-
 PizzaOrder.prototype.getCost = function() {
   var toppings = this.toppings
   this.cost = 5;
@@ -37,7 +36,7 @@ $(document).ready(function(){
       toppingArray.push(topping);
     });
     var pizzaOrder = new PizzaOrder(sizeInput, toppingArray);
-    pizzaOrder.getCost()
+    pizzaOrder.getCost();
     $('.hidden').fadeIn(1000);
     $('.total').text(pizzaOrder.cost);
     $('.name').text(nameInput)
